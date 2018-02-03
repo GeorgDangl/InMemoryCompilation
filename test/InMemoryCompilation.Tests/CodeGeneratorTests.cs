@@ -45,7 +45,7 @@ namespace InMemoryCompilation.Tests
             var calculatorInstance = Activator.CreateInstance(calculatorType);
             var calculateMethod = calculatorType.GetTypeInfo().GetDeclaredMethod("AddIntegers");
             var calculationResult = calculateMethod.Invoke(calculatorInstance, new object[] { x, y });
-            Assert.IsType(typeof(int), calculationResult);
+            Assert.IsType<int>(calculationResult);
             return (int)calculationResult;
         }
 
@@ -89,7 +89,7 @@ namespace InMemoryCompilation.Tests
             }
         }
 
-        private void ThrowExceptionIfCompilationFailure(EmitResult result)
+        private static void ThrowExceptionIfCompilationFailure(EmitResult result)
         {
             if (!result.Success)
             {
